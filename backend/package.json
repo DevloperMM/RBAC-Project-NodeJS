@@ -1,0 +1,29 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon -r dotenv/config app.js",
+    "start": "node -r dotenv/config app.js"
+  },
+  "keywords": [],
+  "author": "github.com/devloperMM",
+  "license": "ISC",
+  "description": "Learning project for authorization role based access control using Node.js, Express, Prisma and Cloud Postgres",
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.2",
+    "@prisma/adapter-neon": "^7.2.0",
+    "@prisma/client": "^7.2.0",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "nodemon": "^3.1.11",
+    "prisma": "^7.2.0"
+  }
+}
