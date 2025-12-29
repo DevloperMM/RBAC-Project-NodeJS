@@ -7,15 +7,6 @@ datasource db {
   provider = "postgresql"
 }
 
-model Role {
-  id          Int      @id @default(autoincrement())
-  name        String   @unique
-  permissions String[]
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  users       User[]   @relation("UserRoles")
-}
-
 model User {
   id        Int      @id @default(autoincrement())
   name      String
@@ -24,4 +15,23 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   roles     Role[]   @relation("UserRoles")
+}
+
+model Role {
+  id          Int          @id @default(autoincrement())
+  name        String       @unique
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  permissions Permission[] @relation("RolePermissions")
+  users       User[]       @relation("UserRoles")
+}
+
+model Permission {
+  id        Int      @id @default(autoincrement())
+  resource  String
+  action    String
+  createdAt DateTime @default(now())
+  roles     Role[]   @relation("RolePermissions")
+
+  @@unique([resource, action], name: "resource_action")
 }
